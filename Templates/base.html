@@ -4,23 +4,27 @@
    <title> {% block title %}My Web Application{% endblock %}</title>
    <style>
    body{font-family:Arial, Helvetica, sans-serif; padding: 20px;}
-    header{background:#333;color: white; padding: 10px; margin-top:40px}
-    footer{background: yellow; padding:10px; margin-top:40px} 
+   header,footer{background:#333;color: white; padding: 10px; margin-top:40px}
+   nav a{margin: 0 10px ; color: white; text-decoration: none}
+   main{
+    background: white ;padding: 20px ; margin-top: 20px;border-radius: 5px;
+   }
    </style>
 </head>
 <body>
     <header>
-        <h2>My SITE</h2>
+        <h2>Feedback Page</h2>
         <nav>
-        <a href="/" color="white">Home</a>
-        <a href="/about" color="white">About</a>
+        <a href="/feedback" >Feedback</a>
+        
         </nav>
     </header>
+    <main>
     {%block content %}
 
 
     {% endblock %}
-
+    </main>
     <footer>
         <p>@2025 ETERNAL SYSTEMS </p>
     </footer>
