@@ -1,3 +1,4 @@
+
 from flask import Flask, render_template , request, redirect, url_for, session, flash
 
 
@@ -19,5 +20,3 @@ def form():
 @app.route("/thankyou")
 def thankyou():
     return render_template("thankyou.html")
-
-
