@@ -12,6 +12,8 @@ def form():
           if not name:
                flash("Name cannot be empty")
                return redirect(url_for("form"))
+          
+          session["name"] = name
           flash(f"Thank you {name}, your feedback is valuable to us")          
           return redirect(url_for("thankyou"))
      return render_template("form.html")
@@ -19,4 +21,6 @@ def form():
 
 @app.route("/thankyou")
 def thankyou():
-    return render_template("thankyou.html")
+    
+    name=session.get("name")
+    return render_template("thankyou.html",username=name)
