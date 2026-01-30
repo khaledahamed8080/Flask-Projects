@@ -1,23 +1,24 @@
 from flask import Flask, render_template , request, redirect, url_for, session, flash
-
+from forms import RegistrationForm
 
 app=Flask(__name__)
 app.secret_key="my_secret_key"
 
 @app.route("/",methods=["GET","POST"])
-def form():
-     if request.method=="POST":
-          name=request.form.get("name")
-          if not name:
-               flash("Name cannot be empty")
-               return redirect(url_for("form"))
-          flash(f"Thank you {name}, your feedback is valuable to us")          
-          return redirect(url_for("thankyou"))
-     return render_template("form.html")
+def register():
+     form=RegistrationForm()
+     if form.validate_on_submit():
+          name=form.name.data
+          email=form.email.data
+          flash(f"Welcome. {name}, you Registered Successfully!","Success")
+          return redirect(url_for("success"))
+     
 
 
-@app.route("/thankyou")
-def thankyou():
-    return render_template("thankyou.html")
+     return render_template("register.html",form=form)
+
+@app.route("/success")
+def success():
+     return render_template("success.html")
 
 

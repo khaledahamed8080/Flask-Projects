@@ -5,22 +5,12 @@
    
 </head>
 <body>
-    <header>
-        <h2>Welcome Page</h2>
-        <nav>
-        <a href="/" >Feedback</a>
-        
-        </nav>
-    </header>
-    {% with messages = get_flashed_messages() %}
+    {% with messages = get_flashed_messages(with_categories=True) %}
     {% if messages %}
-    <ul style="color:green">
-       {% for msg in messages %}
-       <li> {{msg}}</li>
-       {% endfor %}
-       
-    </ul>
-    {% endif %}
+    {% for category, msg in messages %}
+    <p style="color:green">{{ msg }}</p>
+    {% endfor %}
+     {% endif %}
     {% endwith %}
     {% block content %} {% endblock %}
     <footer>
