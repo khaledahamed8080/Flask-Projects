@@ -10,6 +10,7 @@ def register():
      if form.validate_on_submit():
           name=form.name.data
           email=form.email.data
+          username=session["name"]
           flash(f"Welcome. {name}, you Registered Successfully!","Success")
           return redirect(url_for("success"))
      
@@ -19,6 +20,7 @@ def register():
 
 @app.route("/success")
 def success():
-     return render_template("success.html")
+     username=session.get("name")
+     return render_template("success.html",name=username)
 
 
